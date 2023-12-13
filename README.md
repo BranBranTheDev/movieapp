@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+### React History
+- developed by Facebook 
+- kept Open Source 
+- cross platform support 
+- React in lead for 6 years 
+- most popular library 
+- Part of MERN stack 
+- react updates on same html, using DOM 
+- react using virtual DOM 
+    - JS object 
+    ex of how it looks:
+        const VirtualDom = {
+            key: value,
+            key: value
+        }
+- updating virtual DOM is faster than updating real DOM 
+- When something changes in a react component, we get a new react element, react will 
+compare the parent and children of the current and previous component 
+- WIll update the real DOM to keep in sync with the virtual DOM 
+- Prereq: JavaScript 
+ 
+### Components 
+- small piece of a user interface 
+- lets you split the UI into independent and reusable performance 
+- helps you build a full fledge interactive website UI 
+- Wy import React?
+    - We need to import React to be able to use the entirety of this library 
+- then we use a JS class to make the react component that extends the react component 
+- then we use the render method to describe what should be displayed and what it should look like 
+- import React from 'react'
+- then arrow function 
+- ex:
+    - const Example = () {
+        return <div>Hello World!</div>
+    }
+    - this called jsx
+    - describes what the UI should look like 
+    - produces react elements 
+    
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Ex code:
 
-## Available Scripts
+import { useState, useEffect } from 'react';
+import './App.css';
 
-In the project directory, you can run:
+const App = () => {
 
-### `npm start`
+  const [counter, setCounter] = useState(0); //hook
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  useEffect(() => {
+    //counter = 100; //never modify/ mutate state directly, do not do this 
+    //correctway
+    alert("You've changed the counter to " + counter);
+  }, [counter]);
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  return (
+    <div className="App">
+      <button onClick={() => setCounter((prevCount) => prevCount - 1)}>-</button>
+      <h1>{counter}</h1>
+      <button onClick={() => setCounter((prevCount) => prevCount + 1)}>+</button>
+    </div>
+  );
+}
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default App;
